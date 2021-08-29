@@ -1,4 +1,5 @@
 ### Terraria-bot 
+目前仍在开发中...
 使用[QICQ](https://github.com/takayama-lily/oicq)机器人框架与其插件开发模板
 
 

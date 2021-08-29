@@ -1,7 +1,12 @@
 "use strict"
-const account = 0;//填写自己的qq
 
-console.log(account);
+const fs = require('fs');
+let qqdata = fs.readFileSync('config.json');
+let config = JSON.parse(qqdata);
+// console.log(config,config.qq);
+
+const account = config.qq;
+
 const bot = require("oicq").createClient(account)
 
 bot.on("system.login.qrcode", function (e) {
