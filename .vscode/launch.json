@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "npm run bot",
+            "name": "启动bot",
+            "request": "launch",
+            "type": "node-terminal"
+        }
+]
+}
