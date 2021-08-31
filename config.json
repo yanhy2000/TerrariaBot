@@ -1,4 +1,8 @@
 {
     "qq": 114514,
-    "gruop": 1919810
+    "admin_qq":114114,
+    "gruop": 1919810,
+    "server_ip":"127.0.0.1",
+    "port":7878,
+    "token":"admin"
 }
