@@ -44,7 +44,7 @@ bot.on("message", function (e) {
 		//全员权限：查询服内玩家数量及在线玩家列表
 		case "/list":
 			{
-				if(e.group_id == groupid)//pass
+				if(groupid.indexOf(e.group_id)!=-1)//群组==
 				{
 					var playerlist = link + "/v2/" +pl+"/list?token="+token;
 					httpget(playerlist,url=>{
@@ -57,18 +57,22 @@ bot.on("message", function (e) {
 								let players = (JSON.parse(url).players[i]).username;
 								str += players;
 							}
-							e.reply("在线玩家："+len+"人\n"+str);
+							e.reply("在线玩家："+len+"\n"+str);
 						}
 						else{
 							e.reply("服务器未启动或连接异常！")
 						}
 					});
-				};
+				}
+				else
+				{
+					e.reply("你没有使用指令的权限！")
+				}
 			};break;
 		//管理员权限：关闭服务器
 		case "/stop":
 			{
-				if(e.group_id == groupid && e.user_id == admin)//pass
+				if(admin.indexOf(e.user_id)!=-1 && groupid.indexOf(e.group_id)!=-1)
 				{
 					var url = link + "/v3/" + serv + "/rawcmd?token=" + token +"&cmd=/stop";
 					httpget(url,html=>{
@@ -85,12 +89,16 @@ bot.on("message", function (e) {
 							}
 						}
 					})
+				}else
+				{
+					e.reply("你没有使用指令的权限！")
 				}
 			};break;
 		//管理员权限：开启服务器（todo）
 		case "/start":
 			{
 				// if(e.group_id == groupid && e.user_id == admin)//pass
+				// conf.admin_qq.indexOf(114514)!=-1
 			}
 	}
 
